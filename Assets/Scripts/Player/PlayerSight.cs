@@ -25,7 +25,7 @@ public class PlayerSight : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		//Baktýðý yere doðru bir ýþýn fýrlatýr ve ýþýnýn çarptýðý nesneleri algýlar
+		//Baktï¿½ï¿½ï¿½ yere doï¿½ru bir ï¿½ï¿½ï¿½n fï¿½rlatï¿½r ve ï¿½ï¿½ï¿½nï¿½n ï¿½arptï¿½ï¿½ï¿½ nesneleri algï¿½lar
 		detectObject = Physics.BoxCast(col.bounds.center, transform.localScale * 0.5f, transform.forward, out hit,
 			transform.rotation, maxDistance, sightLayer);
 	}
@@ -38,7 +38,7 @@ public class PlayerSight : MonoBehaviour
 
 	private void ResearchPaper()
 	{
-		//Oyuncu kanýtlarý araþtýrdýðý yer
+		//Oyuncu kanï¿½tlarï¿½ araï¿½tï¿½rdï¿½ï¿½ï¿½ yer
 		if (hit.collider.transform.parent.TryGetComponent(out ResearchIntreact research))
 		{
 			Debug.Log(hit.collider.transform.parent.name);
