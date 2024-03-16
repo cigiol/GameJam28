@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -9,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     public Animator animator;
     Vector3 moveInput;
+    AudioSource runAudio;
 
     private float rotationSpeed = 5f;
     private bool isMoving = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        runAudio = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -24,10 +27,12 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.magnitude > 0f){
             isMoving = true;
             animator.SetBool("isRunning",true);
+            runAudio.enabled = true;
         }
         else{
             isMoving = false;
             animator.SetBool("isRunning",false);
+            runAudio.enabled = false;
         }
 
         //Yatay ve dikey inputlar� al�yor

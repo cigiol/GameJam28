@@ -10,5 +10,17 @@ public class PlayerCollisions : MonoBehaviour
 		{
 			interactable.Intreact();
 		}
+		if(other.CompareTag("UI")){
+			var text = other.gameObject.transform.GetChild(0).gameObject;
+			text.SetActive(true);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if(other.CompareTag("UI")){
+			var text = other.gameObject.transform.GetChild(0).gameObject;
+			text.SetActive(false);
+		}
 	}
 }
