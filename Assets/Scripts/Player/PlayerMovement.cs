@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
     Rigidbody rb;
+    public Animator animator;
     Vector3 moveInput;
 
     private float rotationSpeed = 5f;
@@ -14,17 +15,22 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        //Hareket edip etmediðini kontrol et
-        if (moveInput.magnitude > 0f)
+        //Hareket edip etmediï¿½ini kontrol et
+        if (moveInput.magnitude > 0f){
             isMoving = true;
-        else
+            animator.SetBool("isRunning",true);
+        }
+        else{
             isMoving = false;
+            animator.SetBool("isRunning",false);
+        }
 
-        //Yatay ve dikey inputlarý alýyor
+        //Yatay ve dikey inputlarï¿½ alï¿½yor
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
     }
 
@@ -33,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
 	}
 
-    //Daha pürüzsüz dönüþler için late update içinde çaðýrýyoruz dönme fonksiyonunu
+    //Daha pï¿½rï¿½zsï¿½z dï¿½nï¿½ï¿½ler iï¿½in late update iï¿½inde ï¿½aï¿½ï¿½rï¿½yoruz dï¿½nme fonksiyonunu
     private void LateUpdate()
     {
         LookAtWalkPoint();
@@ -45,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(transform.position + moveInput.normalized * moveSpeed * Time.fixedDeltaTime);
 	}
 
-    //Gittiði yöne bakma
+    //Gittiï¿½i yï¿½ne bakma
     private void LookAtWalkPoint()
     {
         if (!isMoving)
