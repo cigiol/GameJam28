@@ -1,33 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;
+	public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+	[SerializeField] private float moveSpeed = 3f;
     Rigidbody rb;
     public Animator animator;
     Vector3 moveInput;
+    AudioSource runAudio;
 
     private float rotationSpeed = 5f;
     private bool isMoving = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        runAudio = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        if (GameMaster.Instance.IsGameEnded)
+            return;
+
         //Hareket edip etmedi�ini kontrol et
         if (moveInput.magnitude > 0f){
             isMoving = true;
             animator.SetBool("isRunning",true);
+            runAudio.enabled = true;
         }
         else{
             isMoving = false;
             animator.SetBool("isRunning",false);
+            runAudio.enabled = false;
         }
 
         //Yatay ve dikey inputlar� al�yor
@@ -36,12 +45,18 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+        if (GameMaster.Instance.IsGameEnded)
+            return;
+
         MovePlayer();
 	}
 
     //Daha p�r�zs�z d�n��ler i�in late update i�inde �a��r�yoruz d�nme fonksiyonunu
     private void LateUpdate()
     {
+        if (GameMaster.Instance.IsGameEnded)
+            return;
+
         LookAtWalkPoint();
     }
 

@@ -40,4 +40,9 @@ public class CameraManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void SetCamerasOrthoSize(float value, CinemachineVirtualCamera cam)
+	{
+		cam.m_Lens.OrthographicSize = value;
+	}
 }

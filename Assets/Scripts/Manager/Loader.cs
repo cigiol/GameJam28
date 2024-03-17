@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class Loader
+public class Loader : MonoBehaviour
 {
 	public enum Scene
 	{
@@ -17,18 +17,23 @@ public static class Loader
 		LoadingScene,
 	}
 
-	private static Scene targetScene;
+	private static int targetScene;
 
 
-	public static void Load(Scene targetScene)
+	public static void Load(int targetScene)
 	{
 		Loader.targetScene = targetScene;
 
-		SceneManager.LoadScene(Scene.LoadingScene.ToString());
+		SceneManager.LoadScene("LoadingScene");
 	}
 
 	public static void LoaderCallback()
 	{
-		SceneManager.LoadScene(targetScene.ToString());
+		SceneManager.LoadScene(targetScene);
+	}
+
+	public void QuitButton()
+	{
+		Application.Quit();
 	}
 }
