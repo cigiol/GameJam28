@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LoaderCallback : MonoBehaviour
 {
-
 	private bool isFirstUpdate = true;
 	[SerializeField] private float startTimer;
 	private float timer;
@@ -25,5 +24,4 @@ public class LoaderCallback : MonoBehaviour
 
 		timer -= Time.deltaTime;
 	}
-
 }

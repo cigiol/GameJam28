@@ -10,6 +10,9 @@ public class GameMaster : MonoBehaviour
 	public event Action OnLevelFailed;
 	public event Action OnLevelCompleted;
 
+	public bool IsGameEnded { get => isGameEnded; private set => isGameEnded = value; }
+	private bool isGameEnded = false;
+
 	private void Awake()
 	{
 		if(Instance == null)
@@ -24,6 +27,10 @@ public class GameMaster : MonoBehaviour
 
 	public void LevelFailed()
 	{
+		if (isGameEnded)
+			return;
+
+		IsGameEnded = true;
 		//oyuncu yakalandýðýnda bu çalýþýr
 		OnLevelFailed?.Invoke();
 		Debug.Log("Oyuncu yakalandý");
@@ -31,6 +38,10 @@ public class GameMaster : MonoBehaviour
 
 	public void LevelCompleted()
 	{
+		if (isGameEnded)
+			return;
+
+		IsGameEnded = true;
 		//Bölüm tamamlandýðýnda bu çalýþýr
 		OnLevelCompleted?.Invoke();
 		Debug.Log("Oyuncu bölümü geçti");

@@ -16,10 +16,11 @@ public class PlayerCollisions : MonoBehaviour
 			interactable.Intreact();
 		}
 		if(other.CompareTag("UI")){
+			AudioManager.Instance.Play("Grumble");
 			var text = other.gameObject.transform.GetChild(0).gameObject;
 			text.SetActive(true);
 			quest.color = new Color(r,g,b,a);
-			quest.text += "/nDENEME";
+			quest.text = "Gizlice Sohbeti Dinle!\nKanýtlarý Yok Etmeden Araþtýr Ve Fabrikadan Çýkýþý Bul!";
 		}
 	}
 

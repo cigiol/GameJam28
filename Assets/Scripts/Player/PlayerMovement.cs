@@ -6,7 +6,8 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;
+	public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+	[SerializeField] private float moveSpeed = 3f;
     Rigidbody rb;
     public Animator animator;
     Vector3 moveInput;
@@ -23,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameMaster.Instance.IsGameEnded)
+            return;
+
         //Hareket edip etmedi�ini kontrol et
         if (moveInput.magnitude > 0f){
             isMoving = true;
@@ -41,12 +45,18 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+        if (GameMaster.Instance.IsGameEnded)
+            return;
+
         MovePlayer();
 	}
 
     //Daha p�r�zs�z d�n��ler i�in late update i�inde �a��r�yoruz d�nme fonksiyonunu
     private void LateUpdate()
     {
+        if (GameMaster.Instance.IsGameEnded)
+            return;
+
         LookAtWalkPoint();
     }
 
