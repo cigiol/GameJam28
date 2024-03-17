@@ -46,8 +46,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MainTheme
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4ed526b18dee1ca46b511920fe7212aa, type: 3}
     volume: 0.7
+    pitch: 1
+    loop: 0
+    group: {fileID: 24300002, guid: 6ba68983efa03444680cc3dcd654856c, type: 2}
+    source: {fileID: 0}
+  - name: Paper
+    clip: {fileID: 8300000, guid: 863c1b8233a75514ab6bcbb083955c72, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    group: {fileID: 24300002, guid: 6ba68983efa03444680cc3dcd654856c, type: 2}
+    source: {fileID: 0}
+  - name: Alarm
+    clip: {fileID: 8300000, guid: c8265b25c9724e948b38747bba1b54cc, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    group: {fileID: 24300002, guid: 6ba68983efa03444680cc3dcd654856c, type: 2}
+    source: {fileID: 0}
+  - name: Drawr
+    clip: {fileID: 8300000, guid: 1044f02a580c4d040a4835565a67d272, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    group: {fileID: 24300002, guid: 6ba68983efa03444680cc3dcd654856c, type: 2}
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: b7bfc85ade115234fbe270e6ff5804f1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    group: {fileID: 24300002, guid: 6ba68983efa03444680cc3dcd654856c, type: 2}
+    source: {fileID: 0}
+  - name: Grumble
+    clip: {fileID: 8300000, guid: 2b4396a3dc95788478fe241b5fd3bb06, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     group: {fileID: 24300002, guid: 6ba68983efa03444680cc3dcd654856c, type: 2}
